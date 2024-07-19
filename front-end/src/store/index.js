@@ -5,7 +5,10 @@ const API_URL = "http://localhost:4000/graphql";
 
 export default createStore({
   state: {
-    weatherData: null,
+    weatherData: {
+      temperature: 0,
+      description: null,
+    },
     historicalData: [],
     locations: ["Delhi", "Moscow", "Paris", "New York", "Sydney", "Riyadh"],
   },
@@ -19,6 +22,7 @@ export default createStore({
   },
   actions: {
     async fetchWeatherData({ commit }, { location, date }) {
+      console.log(location, date);
       try {
         const response = await axios.post(API_URL, {
           query: `
@@ -33,6 +37,7 @@ export default createStore({
             }
           `,
         });
+
         commit("setWeatherData", response.data.data.getWeather);
       } catch (error) {
         console.error("Error fetching weather data:", error);

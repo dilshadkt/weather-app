@@ -1,82 +1,35 @@
 <template>
-  <div>Historical</div>
-  <!-- <div>
-    <h2 class="text-2xl mb-4">Historical Weather</h2>
-    <div class="mb-4">
-      <label for="location" class="block mb-2">Location</label>
-      <select v-model="location" id="location" class="p-2 border rounded">
-        <option v-for="loc in locations" :key="loc" :value="loc">
-          {{ loc }}
-        </option>
-      </select>
-    </div>
-    <div class="mb-4">
-      <label for="from" class="block mb-2">From Date</label>
-      <input type="date" v-model="from" id="from" class="p-2 border rounded" />
-    </div>
-    <div class="mb-4">
-      <label for="to" class="block mb-2">To Date</label>
-      <input type="date" v-model="to" id="to" class="p-2 border rounded" />
-    </div>
-    <button
-      @click="getHistoricalWeather"
-      class="bg-blue-600 text-white p-2 rounded"
+  <HomeLyout>
+    <div
+      class="bg-[#FAE2BD]/40 text-[#EFAA82] flex flex-col w-full md:w-1/3 h-[403px] md:h-[450px] lg:h-4/6 rounded-[37px] p-5 md:p-12 py-7"
     >
-      Get Historical Data
-    </button>
-    <div v-if="historicalData.length" class="mt-4">
-      <table class="table-auto w-full">
-        <thead>
-          <tr>
-            <th class="px-4 py-2">Location</th>
-            <th class="px-4 py-2">Date</th>
-            <th class="px-4 py-2">Temperature</th>
-            <th class="px-4 py-2">Description</th>
-            <th class="px-4 py-2">Icon</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="data in historicalData" :key="data.date">
-            <td class="border px-4 py-2">{{ data.location }}</td>
-            <td class="border px-4 py-2">{{ data.date }}</td>
-            <td class="border px-4 py-2">{{ data.temperature }}°C</td>
-            <td class="border px-4 py-2">{{ data.description }}</td>
-            <td class="border px-4 py-2">
-              <img
-                :src="`http://openweathermap.org/img/w/${data.icon}.png`"
-                alt="weather icon"
-              />
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <h4 class="text-white text-3xl text-center font-semibold">Historical</h4>
+      <form class="flex flex-col justify-between h-full mt-3">
+        <div>
+          <label for="" class="text-black">From : </label>
+          <input
+            type="date"
+            placeholder="From"
+            class="bg-transparent m-3 border-none outline-none"
+          /><br />
+          <label for="" class="text-black">To :</label>
+          <input
+            type="date"
+            placeholder="To"
+            class="bg-transparent m-3 border-none outline-none"
+          />
+        </div>
+        <button class="bg-white py-3 rounded-lg">Show</button>
+      </form>
     </div>
-  </div> -->
+  </HomeLyout>
 </template>
-
-<!-- <script>
-import { mapState, mapActions } from "vuex";
-
+<script>
+import HomeLyout from "@/layout/HomeLyout.vue";
 export default {
-  data() {
-    return {
-      location: "Delhi",
-      from: "",
-      to: "",
-    };
-  },
-  computed: {
-    ...mapState(["historicalData", "locations"]),
-  },
-  methods: {
-    ...mapActions(["fetchHistoricalData"]),
-    getHistoricalWeather() {
-      this.fetchHistoricalData({
-        location: this.location,
-        from: this.from,
-        to: this.to,
-      });
-    },
+  name: "Historical",
+  components: {
+    HomeLyout,
   },
 };
-</script> -->
+</script>

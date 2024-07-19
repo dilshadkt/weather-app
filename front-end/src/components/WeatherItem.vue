@@ -13,7 +13,3 @@ export default {
   name: "WeatherItem",
 };
 </script>
-
-<style scoped>
-/* Add your styles here */
-</style>

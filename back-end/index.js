@@ -5,12 +5,13 @@ const { buildSchema } = require("graphql");
 const axios = require("axios");
 const Weather = require("./model/weather");
 const dotenv = require("dotenv");
+const cors = require("cors");
 const app = express();
 
 dotenv.config();
 const PORT = process.env.PORT || 4000;
 const OPENWEATHERMAP_API_KEY = process.env.OPENWEATHERMAP_API_KEY; // Replace with your OpenWeatherMap API key
-
+app.use(cors());
 // Define the GraphQL schema
 const schema = buildSchema(`
   type Weather {
